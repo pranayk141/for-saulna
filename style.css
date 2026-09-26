@@ -2408,6 +2408,17 @@ h1 {
 
 }
 
+/* The celebration is intentionally taller than a short browser window.
+   Start it at the top in that case so the envelope/heading is never clipped;
+   the celebration overlay itself remains scrollable. */
+@media (max-height: 900px) {
+  .celebration {
+    align-content: start;
+    padding-top: max(22px, env(safe-area-inset-top));
+    padding-bottom: max(70px, env(safe-area-inset-bottom));
+  }
+}
+
 /* =========================================================
    VERY SMALL MOBILE
    ========================================================= */
