@@ -696,6 +696,8 @@ yesButton.addEventListener(
     */
 
     setTimeout(() => {
+      celebration.scrollTop = 0;
+
       celebration.classList.add(
         "is-visible"
       );
