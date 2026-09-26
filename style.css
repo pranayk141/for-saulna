@@ -1,0 +1,2665 @@
+/* =========================================================
+   VINTAGE FRENCH LOVE LETTER THEME
+   ========================================================= */
+
+:root {
+  --paper: #f5ecdf;
+  --paper-light: #fffaf1;
+  --paper-dark: #e6d5bf;
+
+  --cream: #f9f1e5;
+  --beige: #ddc8ae;
+  --beige-deep: #bca083;
+
+  --ink: #241c18;
+  --ink-soft: #65574f;
+
+  --burgundy: #7e1f2b;
+  --burgundy-deep: #59131c;
+  --burgundy-soft: #a85f67;
+
+  --antique-gold: #a88755;
+  --antique-gold-soft: #c9ad80;
+
+  --shadow:
+    0 25px 80px rgba(57, 39, 27, 0.21);
+
+  --serif:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  --display:
+    "Italiana",
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  --sans:
+    "DM Sans",
+    system-ui,
+    sans-serif;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+
+  overflow-x: hidden;
+
+  color: var(--ink);
+
+  font-family: var(--serif);
+
+  background:
+    radial-gradient(
+      circle at 18% 14%,
+      rgba(255, 255, 255, 0.8),
+      transparent 33%
+    ),
+    radial-gradient(
+      circle at 82% 80%,
+      rgba(175, 127, 89, 0.14),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      #f9f1e6 0%,
+      #eee1d0 48%,
+      #e6d2bb 100%
+    );
+}
+
+
+/* =========================================================
+   SUBTLE PAPER GRAIN
+   ========================================================= */
+
+.page-texture {
+  position: fixed;
+  inset: 0;
+
+  z-index: -4;
+
+  pointer-events: none;
+
+  opacity: 0.24;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(74, 52, 36, 0.04) 0,
+      rgba(74, 52, 36, 0.04) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.12) 0,
+      rgba(255, 255, 255, 0.12) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+
+/* =========================================================
+   FADED BACKGROUND DECORATIONS
+   ========================================================= */
+
+/* =========================================================
+   AMBIENT VICTORIAN BACKGROUND
+   ========================================================= */
+
+.ambient-decor {
+  position: fixed;
+  inset: 0;
+
+  /* Keep the ornaments above the body's painted background. */
+  z-index: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.ambient {
+  position: absolute;
+
+  display: block;
+
+  pointer-events: none;
+
+  transform-origin: center;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+/* =========================================================
+   PHASE 2 LETTER OPENING
+   ========================================================= */
+
+.letter-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0;
+
+  padding: 28px;
+  text-align: center;
+
+  background:
+    radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.82), transparent 34%),
+    linear-gradient(145deg, #f9f1e5, #e5d1b8);
+
+  transition: opacity 700ms ease, visibility 700ms ease;
+}
+
+.letter-intro.is-open {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope {
+  position: relative;
+  width: min(420px, 82vw);
+  aspect-ratio: 1.55 / 1;
+  margin-bottom: 34px;
+
+  background: #e3c9a9;
+  border: 1px solid rgba(107, 76, 51, 0.38);
+  box-shadow: 0 24px 55px rgba(61, 42, 28, 0.2);
+  animation: envelopeFloat 4s ease-in-out infinite;
+}
+
+.envelope::before,
+.envelope::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.envelope::before {
+  border-left: 1px solid rgba(126, 31, 43, 0.22);
+  border-bottom: 1px solid rgba(126, 31, 43, 0.22);
+  transform: skewY(31deg) scaleX(0.71);
+  transform-origin: bottom left;
+}
+
+.envelope::after {
+  border-right: 1px solid rgba(126, 31, 43, 0.22);
+  border-bottom: 1px solid rgba(126, 31, 43, 0.22);
+  transform: skewY(-31deg) scaleX(0.71);
+  transform-origin: bottom right;
+}
+
+.envelope-paper {
+  position: absolute;
+  left: 13%;
+  right: 13%;
+  bottom: 7%;
+  z-index: 1;
+
+  display: grid;
+  gap: 5px;
+  padding: 18px 12px 21px;
+
+  color: var(--ink);
+  background: var(--paper-light);
+  border: 1px solid rgba(107, 76, 51, 0.2);
+  box-shadow: 0 -4px 15px rgba(61, 42, 28, 0.08);
+}
+
+.envelope-paper span {
+  color: var(--burgundy);
+  font-size: 0.72rem;
+  font-style: italic;
+  letter-spacing: 0.12em;
+}
+
+.envelope-paper strong {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 6vw, 2.5rem);
+  font-weight: 400;
+}
+
+.envelope-flap {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 3;
+  height: 58%;
+
+  background: #ead4b8;
+  border-bottom: 1px solid rgba(107, 76, 51, 0.32);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 850ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.letter-intro.is-open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.wax-seal {
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  transform: translate(-50%, -50%);
+
+  color: #f8ead6;
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  background: radial-gradient(circle at 35% 30%, #a7434d, var(--burgundy-deep));
+  border-radius: 50%;
+  box-shadow: 0 5px 12px rgba(73, 22, 29, 0.28);
+  transition: transform 550ms ease, opacity 300ms ease;
+}
+
+.letter-intro.is-open .wax-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7) rotate(20deg);
+}
+
+.letter-intro-kicker {
+  margin: 0 0 9px;
+  color: var(--burgundy);
+  font-size: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.letter-intro-title {
+  max-width: 650px;
+  margin: 0 auto 25px;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: clamp(2.1rem, 5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.open-letter {
+  appearance: none;
+  padding: 14px 25px;
+  color: #fffaf1;
+  font: 600 1rem var(--serif);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  background: linear-gradient(180deg, #8e2634, var(--burgundy));
+  border: 1px solid var(--burgundy-deep);
+  box-shadow: 0 10px 25px rgba(94, 29, 37, 0.2);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.open-letter:hover,
+.open-letter:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(94, 29, 37, 0.28);
+}
+
+.open-letter span {
+  margin-left: 7px;
+}
+
+.letter-intro-hint {
+  margin: 15px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+@keyframes envelopeFloat {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+/* A second, slower layer gives the background its soft falling-petal feel. */
+.ambient-rain {
+  position: fixed;
+  inset: 0;
+
+  z-index: 0;
+  overflow: hidden;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.rain {
+  position: absolute;
+  top: -12vh;
+  left: var(--rain-left);
+
+  display: block;
+
+  color: var(--rain-color);
+  font-family: Georgia, serif;
+  font-size: var(--rain-size);
+  line-height: 1;
+  opacity: var(--rain-opacity);
+
+  filter: blur(0.15px);
+  will-change: transform, opacity;
+
+  animation: ambientRain var(--rain-duration) linear var(--rain-delay) infinite;
+}
+
+.rain--1  { --rain-left: 4%;  --rain-size: 1.3rem;  --rain-color: var(--burgundy);      --rain-opacity: 0.12; --rain-duration: 19s; --rain-delay: -4s; }
+.rain--2  { --rain-left: 10%; --rain-size: 1.1rem;  --rain-color: var(--antique-gold);  --rain-opacity: 0.14; --rain-duration: 23s; --rain-delay: -16s; }
+.rain--3  { --rain-left: 17%; --rain-size: 1.4rem;  --rain-color: var(--burgundy);      --rain-opacity: 0.10; --rain-duration: 21s; --rain-delay: -9s; }
+.rain--4  { --rain-left: 24%; --rain-size: 1rem;    --rain-color: var(--burgundy);      --rain-opacity: 0.11; --rain-duration: 25s; --rain-delay: -20s; }
+.rain--5  { --rain-left: 31%; --rain-size: 1.2rem;  --rain-color: var(--burgundy-soft); --rain-opacity: 0.10; --rain-duration: 20s; --rain-delay: -2s; }
+.rain--6  { --rain-left: 39%; --rain-size: 1rem;    --rain-color: var(--antique-gold);  --rain-opacity: 0.13; --rain-duration: 24s; --rain-delay: -13s; }
+.rain--7  { --rain-left: 46%; --rain-size: 1.4rem;  --rain-color: var(--burgundy);      --rain-opacity: 0.09; --rain-duration: 22s; --rain-delay: -7s; }
+.rain--8  { --rain-left: 53%; --rain-size: 1rem;    --rain-color: var(--burgundy);      --rain-opacity: 0.12; --rain-duration: 26s; --rain-delay: -18s; }
+.rain--9  { --rain-left: 60%; --rain-size: 1.25rem; --rain-color: var(--burgundy);      --rain-opacity: 0.10; --rain-duration: 20s; --rain-delay: -11s; }
+.rain--10 { --rain-left: 67%; --rain-size: 1rem;    --rain-color: var(--antique-gold);  --rain-opacity: 0.13; --rain-duration: 23s; --rain-delay: -5s; }
+.rain--11 { --rain-left: 74%; --rain-size: 1.35rem; --rain-color: var(--burgundy);      --rain-opacity: 0.11; --rain-duration: 21s; --rain-delay: -15s; }
+.rain--12 { --rain-left: 81%; --rain-size: 1rem;    --rain-color: var(--burgundy-soft); --rain-opacity: 0.10; --rain-duration: 25s; --rain-delay: -22s; }
+.rain--13 { --rain-left: 87%; --rain-size: 1.2rem;  --rain-color: var(--burgundy);      --rain-opacity: 0.12; --rain-duration: 22s; --rain-delay: -8s; }
+.rain--14 { --rain-left: 92%; --rain-size: 1rem;    --rain-color: var(--antique-gold);  --rain-opacity: 0.13; --rain-duration: 24s; --rain-delay: -19s; }
+.rain--15 { --rain-left: 28%; --rain-size: 0.9rem;  --rain-color: var(--burgundy);      --rain-opacity: 0.09; --rain-duration: 27s; --rain-delay: -12s; }
+.rain--16 { --rain-left: 78%; --rain-size: 0.95rem; --rain-color: var(--burgundy);      --rain-opacity: 0.10; --rain-duration: 28s; --rain-delay: -24s; }
+
+@keyframes ambientRain {
+  0% { transform: translate3d(0, -12vh, 0) rotate(-12deg) scale(0.9); }
+  25% { transform: translate3d(18px, 25vh, 0) rotate(10deg) scale(1); }
+  50% { transform: translate3d(-14px, 55vh, 0) rotate(-4deg) scale(1.06); }
+  75% { transform: translate3d(12px, 85vh, 0) rotate(12deg) scale(0.96); }
+  100% { transform: translate3d(-8px, 118vh, 0) rotate(-8deg) scale(1.02); }
+}
+
+
+/* Roses */
+
+.ambient--rose {
+  color: var(--burgundy);
+
+  font-family: Georgia, serif;
+
+  opacity: 0.065;
+
+  filter: blur(0.15px);
+
+  animation:
+    roseDrift
+    13s
+    ease-in-out
+    infinite;
+}
+
+
+/* Hearts */
+
+.ambient--heart {
+  color: var(--antique-gold);
+
+  font-family: var(--serif);
+
+  opacity: 0.09;
+
+  animation:
+    heartDrift
+    11s
+    ease-in-out
+    infinite;
+}
+
+
+/* ------------------------------ */
+/* Individual placement */
+/* ------------------------------ */
+
+.ambient--1 {
+  top: 5%;
+  left: 3%;
+
+  font-size:
+    clamp(
+      7rem,
+      14vw,
+      12rem
+    );
+
+  animation-delay: -1s;
+}
+
+
+.ambient--2 {
+  top: 13%;
+  right: 8%;
+
+  font-size:
+    clamp(
+      2.2rem,
+      4vw,
+      3.8rem
+    );
+
+  animation-delay: -5s;
+}
+
+
+.ambient--3 {
+  top: 48%;
+  left: -1%;
+
+  font-size:
+    clamp(
+      5rem,
+      10vw,
+      9rem
+    );
+
+  animation-delay: -7s;
+}
+
+
+.ambient--4 {
+  top: 62%;
+  right: 5%;
+
+  font-size:
+    clamp(
+      2.5rem,
+      5vw,
+      4.3rem
+    );
+
+  animation-delay: -2s;
+}
+
+
+.ambient--5 {
+  right: -2%;
+  bottom: 2%;
+
+  font-size:
+    clamp(
+      8rem,
+      16vw,
+      14rem
+    );
+
+  animation-delay: -10s;
+}
+
+
+.ambient--6 {
+  bottom: 9%;
+  left: 9%;
+
+  font-size:
+    clamp(
+      2rem,
+      4vw,
+      3.5rem
+    );
+
+  animation-delay: -8s;
+}
+
+
+.ambient--7 {
+  top: 30%;
+  right: 18%;
+
+  font-size:
+    clamp(
+      3.2rem,
+      6vw,
+      5.5rem
+    );
+
+  opacity: 0.04;
+
+  animation-delay: -4s;
+}
+
+
+.ambient--8 {
+  top: 78%;
+  left: 30%;
+
+  font-size:
+    clamp(
+      1.8rem,
+      3vw,
+      3rem
+    );
+
+  opacity: 0.075;
+
+  animation-delay: -6s;
+}
+
+
+/* ------------------------------ */
+/* Slow romantic movement */
+/* ------------------------------ */
+
+@keyframes roseDrift {
+
+  0%,
+  100% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      rotate(-8deg)
+      scale(1);
+  }
+
+  25% {
+    transform:
+      translate3d(
+        10px,
+        -13px,
+        0
+      )
+      rotate(-3deg)
+      scale(1.025);
+  }
+
+  50% {
+    transform:
+      translate3d(
+        -7px,
+        -24px,
+        0
+      )
+      rotate(5deg)
+      scale(1.045);
+  }
+
+  75% {
+    transform:
+      translate3d(
+        7px,
+        -10px,
+        0
+      )
+      rotate(1deg)
+      scale(1.02);
+  }
+
+}
+
+
+@keyframes heartDrift {
+
+  0%,
+  100% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      rotate(-7deg);
+  }
+
+  50% {
+    transform:
+      translate3d(
+        5px,
+        -17px,
+        0
+      )
+      rotate(8deg);
+  }
+
+}
+
+.background-rose {
+  color: var(--burgundy);
+
+  font-family: Georgia, serif;
+
+  opacity: 0.075;
+}
+
+.background-rose--one {
+  top: 4%;
+  left: -50px;
+
+  font-size: clamp(11rem, 25vw, 20rem);
+
+  transform: rotate(-18deg);
+}
+
+.background-rose--two {
+  right: -45px;
+  bottom: -35px;
+
+  font-size: clamp(10rem, 24vw, 19rem);
+
+  transform: rotate(22deg);
+}
+
+.background-heart {
+  color: var(--burgundy);
+
+  opacity: 0.09;
+}
+
+.background-heart--one {
+  top: 13%;
+  right: 8%;
+
+  font-size: 3rem;
+
+  transform: rotate(12deg);
+}
+
+.background-heart--two {
+  bottom: 12%;
+  left: 8%;
+
+  font-size: 4rem;
+
+  transform: rotate(-10deg);
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.page {
+  position: relative;
+
+  /* The letter should sit above the ambient ornaments. */
+  z-index: 1;
+
+  min-height: 100svh;
+
+  display: grid;
+  place-items: center;
+
+  padding:
+    max(18px, env(safe-area-inset-top))
+    max(18px, env(safe-area-inset-right))
+    max(18px, env(safe-area-inset-bottom))
+    max(18px, env(safe-area-inset-left));
+}
+
+
+/* =========================================================
+   LOVE LETTER CARD
+   ========================================================= */
+
+.question-card {
+  position: relative;
+  isolation: isolate;
+
+  width: min(730px, 100%);
+
+  /*
+    Normal screens:
+    try to stay comfortably inside one viewport.
+  */
+  max-height: none;
+
+  padding:
+    clamp(
+      30px,
+      5.5vh,
+      58px
+    )
+    clamp(
+      28px,
+      7vw,
+      68px
+    )
+    clamp(
+      28px,
+      5vh,
+      52px
+    );
+
+  /* Let the page scroll naturally on short screens. A nested scroll area
+     would make the footer slide underneath the decorative inner border. */
+  overflow: visible;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 255, 0.75),
+      transparent 40%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 250, 241, 0.98),
+      rgba(243, 231, 214, 0.98)
+    );
+
+  border:
+    1px solid
+    rgba(107, 76, 51, 0.28);
+
+  box-shadow:
+    var(--shadow),
+    inset 0 0 55px
+    rgba(158, 119, 83, 0.08);
+
+  animation:
+    cardEntrance
+    900ms
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+
+/*
+  Outer Victorian frame
+*/
+.question-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 11px;
+
+  z-index: -1;
+
+  border:
+    1px solid
+    rgba(126, 31, 43, 0.28);
+
+  pointer-events: none;
+}
+
+
+/*
+  Inner gold line
+*/
+.question-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 18px;
+
+  z-index: -1;
+
+  border:
+    1px solid
+    rgba(168, 135, 85, 0.27);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ENTRANCE
+   ========================================================= */
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(24px)
+      scale(0.975);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   VICTORIAN CORNERS
+   ========================================================= */
+
+.corner {
+  position: absolute;
+
+  z-index: 4;
+
+  color: var(--antique-gold);
+
+  font-family: Georgia, serif;
+
+  font-size: 2.3rem;
+
+  line-height: 1;
+
+  opacity: 0.82;
+
+  pointer-events: none;
+}
+
+.corner--tl {
+  top: 20px;
+  left: 22px;
+
+  transform: rotate(-45deg);
+}
+
+.corner--tr {
+  top: 20px;
+  right: 22px;
+
+  transform: rotate(45deg);
+}
+
+.corner--bl {
+  bottom: 20px;
+  left: 22px;
+
+  transform: rotate(-135deg);
+}
+
+.corner--br {
+  right: 22px;
+  bottom: 20px;
+
+  transform: rotate(135deg);
+}
+
+
+/* =========================================================
+   LETTER HEADING
+   ========================================================= */
+
+.letter-heading {
+  position: relative;
+
+  z-index: 2;
+
+  margin-bottom:
+    clamp(
+      14px,
+      2.5vh,
+      25px
+    );
+}
+
+.letter-label {
+  margin:
+    13px
+    0
+    2px;
+
+  color: var(--ink-soft);
+
+  font-size: 0.82rem;
+  font-style: italic;
+
+  letter-spacing: 0.09em;
+}
+
+.recipient-name {
+  margin: 0;
+
+  color: var(--burgundy);
+
+  font-family: var(--display);
+
+  font-size:
+    clamp(
+      2rem,
+      6vw,
+      3.1rem
+    );
+
+  font-weight: 400;
+
+  letter-spacing: 0.06em;
+}
+
+
+/* =========================================================
+   ORNAMENTAL DIVIDERS
+   ========================================================= */
+
+.ornamental-divider,
+.heart-divider {
+  width: min(350px, 80%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin:
+    0
+    auto;
+
+  color: var(--antique-gold);
+}
+
+.ornamental-divider span,
+.heart-divider span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      currentColor
+    );
+
+  opacity: 0.55;
+}
+
+.ornamental-divider span:last-child,
+.heart-divider span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      currentColor,
+      transparent
+    );
+}
+
+.ornamental-divider b {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.ornamental-divider--small {
+  width: 170px;
+
+  margin-top: 15px;
+}
+
+.ornamental-divider--small b {
+  font-size: 0.75rem;
+}
+
+.heart-divider {
+  width: min(250px, 68%);
+
+  margin-top:
+    clamp(
+      10px,
+      2vh,
+      22px
+    );
+
+  margin-bottom:
+    clamp(
+      8px,
+      1.7vh,
+      17px
+    );
+
+  color: var(--burgundy-soft);
+}
+
+
+/* =========================================================
+   BOTANICAL ROSES
+   ========================================================= */
+
+.botanical-rose {
+  position: absolute;
+
+  z-index: 0;
+
+  width: 130px;
+  height: 220px;
+
+  opacity: 0.08;
+
+  pointer-events: none;
+}
+
+.botanical-rose--left {
+  left: -14px;
+  bottom: 95px;
+
+  transform:
+    rotate(-18deg);
+}
+
+.botanical-rose--right {
+  top: 105px;
+  right: -11px;
+
+  transform:
+    scaleX(-1)
+    rotate(-12deg);
+}
+
+.rose-bloom {
+  position: absolute;
+
+  top: 0;
+  left: 14px;
+
+  color: var(--burgundy);
+
+  font-family: Georgia, serif;
+
+  font-size: 6rem;
+}
+
+.rose-stem {
+  position: absolute;
+
+  top: 72px;
+  left: 67px;
+
+  width: 2px;
+  height: 135px;
+
+  background: var(--ink-soft);
+
+  transform: rotate(6deg);
+}
+
+.rose-leaf {
+  position: absolute;
+
+  width: 42px;
+  height: 20px;
+
+  border:
+    1px solid
+    var(--ink-soft);
+
+  border-radius:
+    100% 0 100% 0;
+}
+
+.rose-leaf--one {
+  top: 118px;
+  left: 62px;
+
+  transform: rotate(24deg);
+}
+
+.rose-leaf--two {
+  top: 157px;
+  left: 33px;
+
+  transform:
+    scaleX(-1)
+    rotate(17deg);
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.letter-content {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   ROSE MEDALLION
+   ========================================================= */
+
+.rose-medallion {
+  width:
+    clamp(
+      54px,
+      7vh,
+      68px
+    );
+
+  height:
+    clamp(
+      54px,
+      7vh,
+      68px
+    );
+
+  display: grid;
+  place-items: center;
+
+  margin:
+    0
+    auto
+    clamp(
+      10px,
+      1.8vh,
+      18px
+    );
+
+  position: relative;
+
+  border:
+    1px solid
+    rgba(126, 31, 43, 0.28);
+
+  border-radius: 50%;
+
+  color: var(--burgundy);
+
+  background:
+    rgba(255, 250, 241, 0.5);
+}
+
+.rose-medallion::before,
+.rose-medallion::after {
+  content: "";
+
+  position: absolute;
+  inset: 5px;
+
+  border:
+    1px solid
+    rgba(168, 135, 85, 0.24);
+
+  border-radius: 50%;
+}
+
+.rose-medallion span {
+  position: relative;
+
+  z-index: 2;
+
+  font-size: 2rem;
+
+  animation:
+    roseFloat
+    4s
+    ease-in-out
+    infinite;
+}
+
+
+@keyframes roseFloat {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-3deg);
+  }
+
+  50% {
+    transform:
+      translateY(-4px)
+      rotate(3deg);
+  }
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.intro {
+  margin:
+    0
+    0
+    clamp(
+      7px,
+      1.5vh,
+      14px
+    );
+
+  color: var(--ink-soft);
+
+  font-size:
+    clamp(
+      0.95rem,
+      2vh,
+      1.12rem
+    );
+
+  font-style: italic;
+
+  letter-spacing: 0.015em;
+}
+
+h1 {
+  max-width: 580px;
+
+  margin:
+    0
+    auto;
+
+  color: var(--ink);
+
+  font-family: var(--display);
+
+  font-size:
+    clamp(
+      3rem,
+      min(8.5vw, 8.5vh),
+      5.7rem
+    );
+
+  font-weight: 400;
+
+  letter-spacing: -0.045em;
+
+  line-height: 0.94;
+}
+
+.highlight {
+  display: block;
+
+  margin-top: 8px;
+
+  color: var(--burgundy);
+
+  font-family: var(--serif);
+
+  font-style: italic;
+  font-weight: 500;
+}
+
+.subtext {
+  max-width: 440px;
+
+  margin:
+    0
+    auto
+    clamp(
+      15px,
+      2.7vh,
+      30px
+    );
+
+  color: var(--ink-soft);
+
+  font-size:
+    clamp(
+      0.9rem,
+      1.9vh,
+      1.05rem
+    );
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   BUTTON AREA
+   ========================================================= */
+
+.buttons-area {
+  position: relative;
+
+  min-height:
+    clamp(
+      100px,
+      15vh,
+      138px
+    );
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 16px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.button {
+  appearance: none;
+
+  position: relative;
+
+  min-width: 132px;
+
+  border: 0;
+
+  padding:
+    15px
+    26px;
+
+  font-family: var(--serif);
+
+  font-size: 1.08rem;
+  font-weight: 600;
+
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  -webkit-tap-highlight-color: transparent;
+
+  touch-action: manipulation;
+
+  transition:
+    transform 220ms ease,
+    background 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease,
+    width 220ms ease;
+}
+
+
+/* YES */
+.button--yes {
+  z-index: 5;
+
+  color: #fffaf1;
+
+  background:
+    linear-gradient(
+      180deg,
+      #8e2634,
+      var(--burgundy)
+    );
+
+  border:
+    1px solid
+    var(--burgundy-deep);
+
+  box-shadow:
+    0 10px 25px
+    rgba(94, 29, 37, 0.2),
+    inset 0 1px
+    rgba(255, 255, 255, 0.2);
+}
+
+.button--yes::before {
+  content: "";
+
+  position: absolute;
+  inset: 4px;
+
+  border:
+    1px solid
+    rgba(255, 244, 231, 0.25);
+
+  pointer-events: none;
+}
+
+.button--yes:hover {
+  transform:
+    translateY(-3px)
+    scale(1.025);
+
+  background:
+    linear-gradient(
+      180deg,
+      #78202b,
+      var(--burgundy-deep)
+    );
+
+  box-shadow:
+    0 14px 30px
+    rgba(94, 29, 37, 0.27);
+}
+
+.button--yes:active {
+  transform:
+    translateY(0)
+    scale(0.98);
+}
+
+
+/* NO */
+.button--no {
+  z-index: 10;
+
+  color: var(--ink);
+
+  background:
+    linear-gradient(
+      180deg,
+      #f3e8d8,
+      #ddc9af
+    );
+
+  border:
+    1px solid
+    rgba(106, 78, 53, 0.3);
+
+  box-shadow:
+    0 8px 20px
+    rgba(70, 49, 33, 0.12),
+    inset 0 1px
+    rgba(255, 255, 255, 0.75);
+
+  transition:
+    left 220ms
+      cubic-bezier(0.2, 0.8, 0.2, 1),
+    top 220ms
+      cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 200ms ease,
+    width 220ms ease,
+    font-size 220ms ease,
+    opacity 220ms ease;
+}
+
+.button--no.is-running {
+  position: fixed;
+
+  margin: 0;
+
+  z-index: 9999;
+
+  pointer-events: auto;
+
+  will-change:
+    left,
+    top,
+    transform;
+}
+
+
+/* =========================================================
+   ATTEMPT MESSAGE
+   ========================================================= */
+
+.attempt-message {
+  min-height: 29px;
+
+  margin:
+    6px
+    0
+    0;
+
+  color: var(--burgundy);
+
+  font-family: var(--serif);
+
+  font-size: 1.22rem;
+  font-style: italic;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.attempt-message.message-pop {
+  animation:
+    messagePop
+    320ms
+    ease;
+}
+
+@keyframes messagePop {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(6px)
+      scale(0.97);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   BOTTOM FLOURISH
+   ========================================================= */
+
+.bottom-flourish {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top:
+    clamp(
+      8px,
+      1.7vh,
+      18px
+    );
+
+  color: var(--antique-gold);
+
+  opacity: 0.76;
+}
+
+.bottom-flourish span {
+  font-size: 1.3rem;
+}
+
+.bottom-flourish b {
+  color: var(--burgundy);
+
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.footer-note {
+  width: min(100%, 410px);
+  max-width: 410px;
+
+  margin:
+    clamp(
+      5px,
+      1vh,
+      11px
+    )
+    auto
+    0;
+
+  padding-inline: 8px;
+
+  text-align: center;
+  text-wrap: balance;
+
+  color:
+    rgba(
+      58,
+      45,
+      37,
+      0.53
+    );
+
+  font-size:
+    clamp(
+      0.68rem,
+      1.4vh,
+      0.78rem
+    );
+
+  font-style: italic;
+
+  letter-spacing: 0.025em;
+
+  line-height: 1.45;
+}
+
+/* =========================================================
+   CELEBRATION PAGE
+   ========================================================= */
+
+.celebration {
+  position: fixed;
+  inset: 0;
+
+  z-index: 100;
+
+  display: grid;
+  align-content: center;
+  justify-items: center;
+
+  padding: 22px;
+
+  overflow-y: auto;
+
+  opacity: 0;
+  visibility: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 255, 255, 0.8),
+      transparent 36%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(249, 240, 227, 0.89),
+      rgba(232, 214, 191, 0.89)
+    );
+
+  /* Keep the same ambient roses, flowers, and hearts visible behind this
+     page instead of replacing the animated atmosphere. */
+  backdrop-filter: blur(1px);
+
+  transition:
+    opacity 700ms ease,
+    visibility 700ms ease;
+}
+
+.celebration-ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.celebration-ambient .ambient-decor,
+.celebration-ambient .ambient-rain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.celebration-frame {
+  z-index: 1;
+}
+
+.try-again {
+  position: static;
+  z-index: 3;
+
+  appearance: none;
+  transform: none;
+  margin-top: 16px;
+  padding: 8px 14px;
+
+  color: var(--ink-soft);
+  font: italic 0.9rem var(--serif);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+
+  background: rgba(255, 250, 241, 0.55);
+  border: 1px solid rgba(126, 31, 43, 0.2);
+  border-radius: 999px;
+  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.try-again:hover,
+.try-again:focus-visible {
+  color: var(--burgundy);
+  background: rgba(255, 250, 241, 0.9);
+  transform: translateY(-2px);
+}
+
+.celebration.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.celebration-frame {
+  position: relative;
+
+  width: min(700px, 100%);
+
+  padding:
+    clamp(44px, 7vw, 70px)
+    clamp(28px, 8vw, 70px);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 250, 242, 0.98),
+      rgba(243, 231, 214, 0.98)
+    );
+
+  border:
+    1px solid
+    rgba(107, 76, 51, 0.3);
+
+  box-shadow:
+    0 30px 90px
+    rgba(61, 42, 28, 0.2);
+}
+
+.celebration-frame::before {
+  content: "";
+
+  position: absolute;
+  inset: 11px;
+
+  border:
+    1px solid
+    rgba(126, 31, 43, 0.28);
+
+  pointer-events: none;
+}
+
+.celebration-frame::after {
+  content: "";
+
+  position: absolute;
+  inset: 18px;
+
+  border:
+    1px solid
+    rgba(168, 135, 85, 0.24);
+
+  pointer-events: none;
+}
+
+
+.celebration-inner {
+  position: relative;
+
+  z-index: 2;
+
+  text-align: center;
+}
+
+
+.celebration-icon {
+  margin-top: 22px;
+
+  font-size: 3.9rem;
+
+  animation:
+    celebrationRose
+    1.8s
+    ease-in-out
+    infinite alternate;
+}
+
+@keyframes celebrationRose {
+  from {
+    transform:
+      rotate(-4deg)
+      scale(1);
+  }
+
+  to {
+    transform:
+      rotate(4deg)
+      scale(1.07);
+  }
+}
+
+
+.celebration-eyebrow {
+  margin:
+    20px
+    0
+    5px;
+
+  color: var(--burgundy);
+
+  font-size: 0.8rem;
+  font-style: italic;
+
+  letter-spacing: 0.1em;
+}
+
+
+.celebration h2 {
+  margin:
+    8px
+    0
+    16px;
+
+  color: var(--ink);
+
+  font-family: var(--display);
+
+  font-size:
+    clamp(
+      4rem,
+      13vw,
+      7.2rem
+    );
+
+  font-weight: 400;
+
+  line-height: 0.9;
+
+  letter-spacing: -0.05em;
+}
+
+.celebration h2 span {
+  display: block;
+
+  color: var(--burgundy);
+
+  font-family: var(--serif);
+
+  font-style: italic;
+}
+
+
+.celebration-text {
+  max-width: 470px;
+
+  margin:
+    24px
+    auto
+    30px;
+
+  color: var(--ink-soft);
+
+  font-size: 1.05rem;
+
+  line-height: 1.7;
+}
+
+
+.celebration-card {
+  position: relative;
+
+  width: min(410px, 100%);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin:
+    31px
+    auto
+    22px;
+
+  padding:
+    28px
+    25px;
+
+  border:
+    1px solid
+    rgba(126, 31, 43, 0.25);
+
+  background:
+    rgba(255, 250, 241, 0.72);
+
+  box-shadow:
+    inset 0 0 28px
+    rgba(168, 135, 85, 0.06);
+}
+
+.celebration-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 5px;
+
+  border:
+    1px solid
+    rgba(168, 135, 85, 0.22);
+
+  pointer-events: none;
+}
+
+
+.celebration-label {
+  margin-bottom: 8px;
+
+  color: var(--burgundy);
+
+  font-family: var(--serif);
+
+  font-size: 0.75rem;
+  font-style: italic;
+
+  letter-spacing: 0.08em;
+}
+
+
+.celebration-card strong {
+  font-family: var(--display);
+
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+
+.relationship-line {
+  color: var(--ink-soft);
+
+  font-size: 1rem;
+}
+
+.relationship-line em {
+  margin:
+    0
+    5px;
+
+  color: var(--burgundy);
+
+  font-style: normal;
+}
+
+
+.celebration-small {
+  color: var(--ink-soft);
+
+  font-size: 1.08rem;
+  font-style: italic;
+}
+
+.rose-medallion--secret {
+  appearance: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rose-medallion--secret:focus-visible {
+  outline: 2px solid rgba(126, 31, 43, 0.65);
+  outline-offset: 5px;
+}
+
+.secret-message {
+  min-height: 1.25em;
+  margin: -5px auto 4px;
+  color: var(--burgundy);
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.secret-message.is-visible {
+  opacity: 1;
+}
+
+.celebration-date-label {
+  margin-top: 13px;
+  color: var(--burgundy);
+  font-size: 0.7rem;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.celebration-card .celebration-date {
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  font-style: italic;
+}
+
+.celebration-note {
+  max-width: 430px;
+  margin: 22px auto 0;
+  color: var(--burgundy-deep);
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  line-height: 1.2;
+}
+
+.personal-details {
+  width: min(470px, 100%);
+  margin: 25px auto 0;
+  padding-top: 19px;
+  border-top: 1px solid rgba(168, 135, 85, 0.28);
+}
+
+.personal-origin {
+  margin: 0 0 14px;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.nickname-drawer {
+  margin: 0 auto 18px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.nickname-drawer summary {
+  width: fit-content;
+  margin: 0 auto;
+  color: var(--burgundy);
+  cursor: pointer;
+  font-style: italic;
+  text-align: center;
+}
+
+.nickname-drawer p {
+  max-width: 390px;
+  margin: 12px auto 0;
+  line-height: 1.5;
+}
+
+.nickname-drawer .nickname-response {
+  margin-top: 5px;
+  color: var(--burgundy-deep);
+  font-style: italic;
+}
+
+.adored-list {
+  display: grid;
+  gap: 5px;
+  margin: 18px auto;
+  color: var(--burgundy);
+}
+
+.adored-list span {
+  font-size: 0.72rem;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.adored-list strong {
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.song-reference {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.song-reference a {
+  color: var(--burgundy);
+  text-decoration-color: rgba(126, 31, 43, 0.35);
+  text-underline-offset: 3px;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.song-reference a:hover,
+.song-reference a:focus-visible {
+  color: var(--burgundy-deep);
+  text-decoration-color: currentColor;
+}
+
+.why-you {
+  margin: 13px 0 0;
+  color: var(--burgundy-deep);
+  font-family: var(--display);
+  font-size: 1.25rem;
+}
+
+/* Small visual rewards as the runaway-button joke escalates. */
+.button--yes.is-rose-lit::after {
+  content: "\01F339";
+  position: absolute;
+  right: -21px;
+  top: -19px;
+  font-size: 1.4rem;
+  animation: tinyRoseWiggle 900ms ease-in-out infinite alternate;
+}
+
+.question-card.is-dramatic .button--yes {
+  box-shadow:
+    0 0 0 5px rgba(168, 95, 103, 0.08),
+    0 14px 30px rgba(94, 29, 37, 0.3),
+    inset 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.ambient-rain.is-energized .rain {
+  opacity: calc(var(--rain-opacity) + 0.035);
+  filter: blur(0);
+}
+
+@keyframes tinyRoseWiggle {
+  from { transform: rotate(-9deg) translateY(2px); }
+  to { transform: rotate(9deg) translateY(-3px); }
+}
+
+
+/* =========================================================
+   CELEBRATION PARTICLES
+   ========================================================= */
+
+.celebration-particle {
+  position: fixed;
+
+  z-index: 9999;
+
+  pointer-events: none;
+
+  animation:
+    particleBurst
+    1.5s
+    cubic-bezier(
+      0.1,
+      0.8,
+      0.2,
+      1
+    )
+    forwards;
+}
+
+@keyframes particleBurst {
+  0% {
+    opacity: 1;
+
+    transform:
+      translate(0, 0)
+      scale(0.6)
+      rotate(0deg);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        var(--x),
+        var(--y)
+      )
+      scale(1.4)
+      rotate(var(--r));
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .page {
+    padding:
+      max(
+        12px,
+        env(safe-area-inset-top)
+      )
+      10px
+      max(
+        12px,
+        env(safe-area-inset-bottom)
+      );
+  }
+
+
+  .question-card {
+    width: 100%;
+
+    min-height: 0;
+
+    max-height: none;
+
+    padding:
+      clamp(
+        30px,
+        5vh,
+        45px
+      )
+      23px
+      clamp(
+        24px,
+        4vh,
+        36px
+      );
+  }
+
+
+  .question-card::before {
+    inset: 8px;
+  }
+
+
+  .question-card::after {
+    inset: 14px;
+  }
+
+
+  .corner {
+    font-size: 1.7rem;
+  }
+
+
+  .corner--tl {
+    top: 15px;
+    left: 16px;
+  }
+
+
+  .corner--tr {
+    top: 15px;
+    right: 16px;
+  }
+
+
+  .corner--bl {
+    bottom: 15px;
+    left: 16px;
+  }
+
+
+  .corner--br {
+    right: 16px;
+    bottom: 15px;
+  }
+
+
+  .letter-heading {
+    margin-bottom:
+      clamp(
+        12px,
+        2vh,
+        19px
+      );
+  }
+
+
+  .recipient-name {
+    font-size:
+      clamp(
+        1.85rem,
+        6.8vw,
+        2.2rem
+      );
+  }
+
+
+  .rose-medallion {
+    width:
+      clamp(
+        48px,
+        7vh,
+        58px
+      );
+
+    height:
+      clamp(
+        48px,
+        7vh,
+        58px
+      );
+
+    margin-bottom:
+      clamp(
+        8px,
+        1.5vh,
+        15px
+      );
+  }
+
+
+  .rose-medallion span {
+    font-size: 1.65rem;
+  }
+
+
+  h1 {
+    font-size:
+      clamp(
+        2.8rem,
+        min(13vw, 8vh),
+        4.2rem
+      );
+  }
+
+
+  .intro {
+    font-size:
+      clamp(
+        0.9rem,
+        1.9vh,
+        1rem
+      );
+  }
+
+
+  .subtext {
+    margin-bottom:
+      clamp(
+        12px,
+        2vh,
+        22px
+      );
+
+    font-size: 0.93rem;
+
+    line-height: 1.5;
+  }
+
+
+  .buttons-area {
+    min-height:
+      clamp(
+        102px,
+        14vh,
+        145px
+      );
+
+    gap: 10px;
+  }
+
+
+  .button {
+    min-width: 112px;
+
+    padding:
+      14px
+      18px;
+
+    font-size: 1rem;
+  }
+
+
+  .attempt-message {
+    min-height: 23px;
+
+    margin-top: 2px;
+
+    font-size: 1.1rem;
+  }
+
+
+  .botanical-rose {
+    transform:
+      scale(0.72);
+  }
+
+
+  .botanical-rose--left {
+    left: -38px;
+  }
+
+
+  .botanical-rose--right {
+    right: -35px;
+
+    transform:
+      scale(
+        -0.72,
+        0.72
+      )
+      rotate(-12deg);
+  }
+
+
+  .footer-note {
+    max-width: 280px;
+
+    font-size: 0.69rem;
+  }
+
+
+  .celebration {
+    align-content: start;
+    padding: 12px;
+    padding-bottom: max(70px, env(safe-area-inset-bottom));
+  }
+
+
+  .celebration-frame {
+    padding:
+      47px
+      24px;
+  }
+
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .question-card {
+    padding:
+      42px
+      20px
+      34px;
+  }
+
+  h1 {
+    font-size: 3.05rem;
+  }
+
+  .buttons-area {
+    gap: 7px;
+  }
+
+  .button {
+    min-width: 104px;
+
+    padding:
+      13px
+      14px;
+  }
+
+}
+
+/* =========================================================
+   SHORTER DESKTOP / LAPTOP WINDOWS
+   ========================================================= */
+
+@media (max-height: 820px) and (min-width: 601px) {
+
+  .question-card {
+    padding:
+      28px
+      60px
+      25px;
+  }
+
+  .letter-heading {
+    margin-bottom: 12px;
+  }
+
+  .letter-label {
+    margin-top: 7px;
+  }
+
+  .recipient-name {
+    font-size: 2.25rem;
+  }
+
+  .ornamental-divider--small {
+    margin-top: 8px;
+  }
+
+  .rose-medallion {
+    width: 52px;
+    height: 52px;
+
+    margin-bottom: 10px;
+  }
+
+  .rose-medallion span {
+    font-size: 1.55rem;
+  }
+
+  h1 {
+    font-size:
+      clamp(
+        3rem,
+        7.8vh,
+        4.6rem
+      );
+  }
+
+  .subtext {
+    margin-bottom: 14px;
+
+    line-height: 1.45;
+  }
+
+  .buttons-area {
+    min-height: 104px;
+  }
+
+  .attempt-message {
+    min-height: 22px;
+
+    margin-top: 1px;
+
+    font-size: 1.08rem;
+  }
+
+  .bottom-flourish {
+    margin-top: 7px;
+  }
+
+  .footer-note {
+    margin-top: 5px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SHORT VIEWPORTS
+   ========================================================= */
+
+@media (max-height: 680px) {
+
+  /*
+    At this point we stop aggressively shrinking things.
+
+    Instead, scrolling becomes a graceful fallback.
+  */
+
+  .page {
+    display: block;
+
+    min-height: 100svh;
+
+    padding:
+      14px
+      14px
+      24px;
+  }
+
+  .celebration {
+    align-content: start;
+    padding-top: 14px;
+    padding-bottom: max(70px, env(safe-area-inset-bottom));
+  }
+
+  .question-card {
+    width: min(700px, 100%);
+
+    max-height: none;
+
+    margin:
+      0
+      auto;
+
+    padding:
+      30px
+      clamp(
+        22px,
+        6vw,
+        54px
+      )
+      28px;
+  }
+
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible {
+  outline:
+    2px solid
+    rgba(126, 31, 43, 0.65);
+
+  outline-offset: 5px;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration:
+      0.001ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.001ms !important;
+  }
+
+}
+
+.celebration-rain-petal {
+  position: fixed;
+  top: -12vh;
+  z-index: 9998;
+
+  pointer-events: none;
+
+  color: var(--burgundy);
+  line-height: 1;
+  opacity: 0;
+  visibility: visible;
+  text-shadow: 0 2px 5px rgba(89, 19, 28, 0.12);
+  will-change: transform, opacity;
+  contain: layout style paint;
+
+  animation:
+    celebrationRain
+    var(--petal-duration)
+    cubic-bezier(0.2, 0.65, 0.35, 1)
+    var(--petal-delay)
+    forwards;
+}
+
+.celebration-rain-petal:nth-child(3n) {
+  color: var(--antique-gold);
+}
+
+.celebration-rain-petal:nth-child(4n) {
+  color: var(--burgundy-soft);
+}
+
+.celebration-rain-petal.is-white {
+  color: #fffaf1;
+  text-shadow:
+    0 0 4px rgba(168, 135, 85, 0.55),
+    0 2px 5px rgba(89, 19, 28, 0.12);
+}
+
+@keyframes celebrationRain {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -8vh, 0) rotate(0deg) scale(0.7);
+  }
+
+  12% {
+    opacity: 0.82;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform:
+      translate3d(var(--petal-drift), 118vh, 0)
+      rotate(var(--petal-rotate))
+      scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celebration-rain-petal {
+    display: none;
+    animation: none;
+  }
+}

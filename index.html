@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <meta
+    name="theme-color"
+    content="#efe5d6"
+  />
+
+  <title>A Question for Saülna ♡</title>
+
+  <!-- Free Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500;600&family=Italiana&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Phase 2: an antique letter-opening moment before the question appears. -->
+  <section class="letter-intro" id="letterIntro" aria-label="Open the love letter">
+    <div class="envelope" aria-hidden="true">
+      <div class="envelope-paper">
+        <span>une petite lettre</span>
+        <strong>pour Saülna</strong>
+      </div>
+      <div class="envelope-flap"></div>
+      <div class="wax-seal">♡</div>
+    </div>
+    <p class="letter-intro-kicker">a private correspondence</p>
+    <h1 class="letter-intro-title">Sa&uuml;lna, I have a very important question for you...</h1>
+    <button class="open-letter" id="openLetter" type="button">
+      Reveal the question <span aria-hidden="true">♡</span>
+    </button>
+    <p class="letter-intro-hint">There may be roses involved.</p>
+  </section>
+
+  <!--
+    Antique background decoration
+  -->
+  <div class="page-texture" aria-hidden="true"></div>
+
+  <div class="ambient-decor" aria-hidden="true">
+
+    <span class="ambient ambient--rose ambient--1">❀</span>
+    <span class="ambient ambient--heart ambient--2">♡</span>
+
+    <span class="ambient ambient--rose ambient--3">❀</span>
+    <span class="ambient ambient--heart ambient--4">♡</span>
+
+    <span class="ambient ambient--rose ambient--5">❀</span>
+    <span class="ambient ambient--heart ambient--6">♡</span>
+
+    <span class="ambient ambient--rose ambient--7">❀</span>
+    <span class="ambient ambient--heart ambient--8">♡</span>
+
+  </div>
+
+  <!-- Soft falling petals, flowers, and hearts behind the letter. -->
+  <div class="ambient-rain" aria-hidden="true">
+    <span class="rain rain--1">&#127801;</span>
+    <span class="rain rain--2">&#10047;</span>
+    <span class="rain rain--3">&#9825;</span>
+    <span class="rain rain--4">&#10084;</span>
+    <span class="rain rain--5">&#127801;</span>
+    <span class="rain rain--6">&#10047;</span>
+    <span class="rain rain--7">&#9825;</span>
+    <span class="rain rain--8">&#10084;</span>
+    <span class="rain rain--9">&#127801;</span>
+    <span class="rain rain--10">&#10047;</span>
+    <span class="rain rain--11">&#9825;</span>
+    <span class="rain rain--12">&#10084;</span>
+    <span class="rain rain--13">&#127801;</span>
+    <span class="rain rain--14">&#10047;</span>
+    <span class="rain rain--15">&#9825;</span>
+    <span class="rain rain--16">&#10084;</span>
+  </div>
+
+  <main class="page" id="page">
+
+    <!-- ====================================== -->
+    <!-- THE LOVE LETTER -->
+    <!-- ====================================== -->
+
+    <section class="question-card" id="questionCard">
+
+      <!-- Ornamental corners -->
+      <span class="corner corner--tl" aria-hidden="true">❦</span>
+      <span class="corner corner--tr" aria-hidden="true">❦</span>
+      <span class="corner corner--bl" aria-hidden="true">❦</span>
+      <span class="corner corner--br" aria-hidden="true">❦</span>
+
+
+      <!-- Top ornament -->
+      <div class="letter-heading">
+
+        <div class="ornamental-divider" aria-hidden="true">
+          <span></span>
+          <b>❧</b>
+          <span></span>
+        </div>
+
+        <p class="letter-label">
+          une petite lettre pour
+        </p>
+
+        <h3 class="recipient-name">
+          Saülna
+        </h3>
+
+        <div class="ornamental-divider ornamental-divider--small" aria-hidden="true">
+          <span></span>
+          <b>✦</b>
+          <span></span>
+        </div>
+
+      </div>
+
+
+      <!-- Faded botanical rose -->
+      <div class="botanical-rose botanical-rose--left" aria-hidden="true">
+        <span class="rose-bloom">❀</span>
+        <span class="rose-stem"></span>
+        <span class="rose-leaf rose-leaf--one"></span>
+        <span class="rose-leaf rose-leaf--two"></span>
+      </div>
+
+      <div class="botanical-rose botanical-rose--right" aria-hidden="true">
+        <span class="rose-bloom">❀</span>
+        <span class="rose-stem"></span>
+        <span class="rose-leaf rose-leaf--one"></span>
+        <span class="rose-leaf rose-leaf--two"></span>
+      </div>
+
+
+      <!-- Main content -->
+      <div class="letter-content">
+
+        <button
+          class="rose-medallion rose-medallion--secret"
+          id="roseSecret"
+          type="button"
+          aria-label="A secret rose"
+        >
+          <span>🌹</span>
+        </button>
+
+        <p class="secret-message" id="secretMessage" aria-live="polite"></p>
+
+        <p class="intro">
+          I have a rather important question for you...
+        </p>
+
+        <h1>
+          Will you be my
+          <span class="highlight">
+            girlfriend?
+          </span>
+        </h1>
+
+        <div class="heart-divider" aria-hidden="true">
+          <span></span>
+          <b>♡</b>
+          <span></span>
+        </div>
+
+        <p class="subtext" id="subtext">
+          Choose carefully, ma chérie.
+          This little love letter may be slightly biased.
+        </p>
+
+
+        <!-- Buttons -->
+        <div class="buttons-area" id="buttonsArea">
+
+          <button
+            class="button button--yes"
+            id="yesButton"
+            type="button"
+          >
+            <span id="yesButtonText">
+              Yes ♡
+            </span>
+          </button>
+
+          <button
+            class="button button--no"
+            id="noButton"
+            type="button"
+            aria-label="No"
+          >
+            No
+          </button>
+
+        </div>
+
+
+        <p
+          class="attempt-message"
+          id="attemptMessage"
+          aria-live="polite"
+        ></p>
+
+
+        <!-- Bottom flourish -->
+        <div class="bottom-flourish" aria-hidden="true">
+          <span>❧</span>
+          <b>♡</b>
+          <span>❧</span>
+        </div>
+
+        <p class="footer-note">
+          written with affection,
+          unreasonable optimism,
+          and absolutely no bias whatsoever
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================== -->
+    <!-- PHASE 2 CELEBRATION -->
+    <!-- ====================================== -->
+
+    <section
+      class="celebration"
+      id="celebration"
+      aria-hidden="true"
+    >
+
+      <div class="celebration-frame">
+
+        <span class="corner corner--tl" aria-hidden="true">❦</span>
+        <span class="corner corner--tr" aria-hidden="true">❦</span>
+        <span class="corner corner--bl" aria-hidden="true">❦</span>
+        <span class="corner corner--br" aria-hidden="true">❦</span>
+
+        <div class="celebration-inner">
+
+          <div class="ornamental-divider" aria-hidden="true">
+            <span></span>
+            <b>❧</b>
+            <span></span>
+          </div>
+
+          <div class="celebration-icon">
+            🌹
+          </div>
+
+          <p class="celebration-eyebrow">
+            ainsi commence notre histoire
+          </p>
+
+          <h2>
+            She said
+            <span>yes.</span>
+          </h2>
+
+          <div class="heart-divider" aria-hidden="true">
+            <span></span>
+            <b>♡</b>
+            <span></span>
+          </div>
+
+          <p class="celebration-text">
+            Congratulations, Saülna.
+            You have successfully chosen the correct button.
+          </p>
+
+          <div class="celebration-card">
+
+            <span class="celebration-label">
+              official relationship status
+            </span>
+
+            <strong>
+              Saülna + Pranay
+            </strong>
+
+            <span class="relationship-line">
+              Girlfriend
+              <em>♡</em>
+              Boyfriend
+            </span>
+
+            <span class="celebration-date-label">official since</span>
+            <strong class="celebration-date" id="celebrationDate"></strong>
+
+          </div>
+
+          <p class="celebration-note">
+            May this be the first page of a very lovely story.
+          </p>
+
+          <div class="personal-details">
+            <p class="personal-origin">
+              From one Hinge conversation to this very important question.
+            </p>
+
+            <details class="nickname-drawer">
+              <summary>Open the nickname drawer</summary>
+              <p>
+                You&rsquo;ll always be <em>ma poup&eacute;e for this pumpkin</em>,
+                but now with relationship privileges you are my
+                <strong>PEACHES, my baby, my babydoll, my babygirl, meri jaan. Mi Amor.</strong>
+              </p>
+            </details>
+
+            <div class="adored-list">
+              <span>three things I adore</span>
+              <strong>your smile &middot; your laugh &middot; your eyes</strong>
+            </div>
+
+            <p class="why-you">Because you are perfect to me.</p>
+
+            <p class="song-reference">
+              our little soundtrack:
+              <a
+                href="https://www.youtube.com/watch?v=WgTMeICssXY"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <em>Dandelions</em> by Ruth B.
+              </a>
+            </p>
+          </div>
+
+          <p class="celebration-small">
+            Best decision made on this website today.
+          </p>
+
+        </div>
+
+      </div>
+
+      <button
+        class="try-again"
+        id="tryAgain"
+        type="button"
+      >
+        Wanna try again? <span aria-hidden="true">↺</span>
+      </button>
+
+    </section>
+
+  </main>
+
+  <script src="main.js"></script>
+
+</body>
+</html>
