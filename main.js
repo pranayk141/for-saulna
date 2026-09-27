@@ -683,7 +683,7 @@ yesButton.addEventListener(
     noButton.setAttribute("aria-hidden", "true");
 
     celebrationDate.textContent =
-      "September 26, 2026";
+      "September 27, 2026";
 
     document.body.classList.add("is-celebrating");
 
